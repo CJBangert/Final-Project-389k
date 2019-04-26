@@ -1,0 +1,29 @@
+{
+  "name": "final_proj",
+  "version": "1.0.0",
+  "description": "### Overview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "CJ Bangert/Ryan Dietz",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.8.1",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJBangert/Final-Project-389k.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CJBangert/Final-Project-389k/issues"
+  },
+  "homepage": "https://github.com/CJBangert/Final-Project-389k#readme"
+}
