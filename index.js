@@ -16,6 +16,12 @@ app.get('/',function(req,res){
   //  res.send("UNIMPLEMENTED ENDPOINT");
 });	
 
+app.get('/facebooklogin', function(req,res){
+	console.log("Going to login")
+	res.render('facebooklogin')
+	console.log("login rendered")
+});
+
 app.listen(process.env.PORT || 3000, function() {
     console.log('Listening!');
 });
