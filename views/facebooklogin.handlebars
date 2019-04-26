@@ -1,5 +1,22 @@
 
+<span>
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button></span>
 <script>
+ 
+function statusChangeCallBack(response){
+  if (response.status == 'unknown'){
+    throw "login failed"
+  }
+}
+
+ function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '368300920455557',
