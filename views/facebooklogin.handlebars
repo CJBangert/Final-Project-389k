@@ -8,8 +8,9 @@
  
 function statusChangeCallBack(response){
   if (response.status == 'unknown'){
-    throw "login failed"
+    alert("Can't log in");
   }
+  else if(response.status == '')
 }
 
  function checkLoginState() {
