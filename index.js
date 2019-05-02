@@ -9,8 +9,8 @@ app.use('/public', express.static('public'));
 var _ = require("underscore");
 
 //MongoDB Connection
-const MongoClient = require(‘mongodb’).MongoClient;
-const uri = "mongodb+srv://CJADMIN:<password>@cluster0-rx3qh.mongodb.net/test?retryWrites=true";
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://CJADMIN:<%24oundplowDB1>@cluster0-rx3qh.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
