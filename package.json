@@ -1,29 +1,24 @@
 {
-  "name": "final_proj",
-  "version": "1.0.0",
-  "description": "### Overview",
-  "main": "index.js",
+  "name": "Soundplow",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js"
   },
-  "keywords": [],
-  "author": "CJ Bangert/Ryan Dietz",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
-    "express-handlebars": "^3.0.0",
-    "morgan": "^1.8.1",
-    "underscore": "^1.9.1"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CJBangert/Final-Project-389k.git"
-  },
-  "bugs": {
-    "url": "https://github.com/CJBangert/Final-Project-389k/issues"
-  },
-  "homepage": "https://github.com/CJBangert/Final-Project-389k#readme"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-handlebars": "^3.0.2",
+    "express-session": "^1.16.1",
+    "find-or-create": "^1.1.0",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.5.5",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-twitter": "^1.0.4"
+  }
 }
