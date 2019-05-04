@@ -10,16 +10,35 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'));
 
-mongoose.Promise = global.Promise;
 
-const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://CJADMIN:%24oundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true";
-const cliyent = new MongoClient(uri, { useNewUrlParser: true });
-cliyent.connect(err => {
-  const collection = cliyent.db("Soundplow").collection("Users");
-  // perform actions on the collection object
+// const MongoClient = require('mongodb').MongoClient
+// const format = require('util').format
+// const uri = "mongodb+srv://CJADMIN:encodeURIComponent('$oundPlowDB1')@cluster0-rx3qh.mongodb.net/test?retryWrites=true";
+// MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
+// 	if (err) {
+// 		throw err;
+// 	} else {
+// 		console.log("Connected");
+// 	}
+
+// 	client.close()
+// });
+
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+const uri = `mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0`;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(function(err, client) {
+	assert.equal(null, err);
+  	if (err) {
+		throw err;
+	} else {
+		console.log("Connected");
+	}
+
   client.close();
 });
+
 
 
 app.use(session({
