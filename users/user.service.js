@@ -7,7 +7,7 @@ const User = db.User;
 module.exports = {
     authenticate,
     getAll,
-    getById,
+    getById, 
     create,
     update,
     delete: _delete

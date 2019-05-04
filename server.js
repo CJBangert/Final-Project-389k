@@ -25,13 +25,24 @@ app.use('/users', require('./users/users.controller'));
 
 // global error handler
 app.use(errorHandler);
-
-app.get('/users/register',function(req,res){
-	console.log("Going home...")
-    res.render('home');
-    console.log("home rendered")
+app.get('/',function(req,res){
+	if(!req.user){
+		console.log('redirecting...')
+		res.redirect('/authenticate')
+	}
+	else{
+		res.render('home')
+	}
+});
+app.get('/authenticate',function(req,res){
+	console.log("Going to register...")
+    res.render('authenticate');
+    console.log("register rendered")
     
   //  res.send("UNIMPLEMENTED ENDPOINT");
+});
+app.get('/register', function(req,res){
+	res.render('register');
 });	
 
 
