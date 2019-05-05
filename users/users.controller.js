@@ -3,14 +3,33 @@ const router = express.Router();
 const userService = require('./user.service');
 
 // routes
-router.post('/authenticate', authenticate);
-router.post('/register', register);
-router.get('/', getAll);
+router.post('/api/authenticate', authenticate);
+router.post('/api/register', register);
+//router.get('/', getAll);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/:id', update);
+router.get('/authenticate')
 router.delete('/:id', _delete);
-
+router.get('/',function(req,res){
+    if(!req.user){
+        console.log('redirecting...')
+        res.redirect('/authenticate')
+    }
+    else{
+        res.render('home')
+    }
+});
+router.get('/authenticate',function(req,res){
+    console.log("Going to auth...")
+    res.render('authenticate');
+    console.log("register auth")
+    
+  //  res.send("UNIMPLEMENTED ENDPOINT");
+});
+router.get('/register', function(req,res){
+    res.render('register');
+});
 module.exports = router;
 
 function authenticate(req, res, next) {
