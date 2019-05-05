@@ -17,7 +17,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: #FB4C17;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -127,23 +127,23 @@ span.psw {
 </head>
 <body>
 
-<h2>Login</h2>
+<h2>SoundPlow Login</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" method="POST" action="/api/authenticate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input type="text" id = "username" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" id="password" placeholder="Enter Password" name="psw" required>
         
       <button type="submit">Login</button>
     </div>
@@ -164,6 +164,10 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+u=document.getElementById("username").value;
+p=document.getElementById("password").value;
+authenticate({u,p});
+
 </script>
 
 </body>

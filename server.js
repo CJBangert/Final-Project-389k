@@ -12,7 +12,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'));
 var _ = require("underscore");
-
+var router = express.router()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -43,7 +43,11 @@ app.get('/authenticate',function(req,res){
 });
 app.get('/register', function(req,res){
 	res.render('register');
-});	
+});
+
+app.post('/users',function(req,res){
+
+})	
 
 
 // start server
