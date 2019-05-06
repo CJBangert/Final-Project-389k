@@ -21,3 +21,7 @@ client.connect(function(err, client) {
 module.exports = {
     User: require('../users/user.model')
 };
+
+module.exports = {
+	Artis: require('../server')
+}

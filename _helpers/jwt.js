@@ -15,7 +15,8 @@ function jwt() {
             '/views/authenticate',
             '/views/layouts/main',
             '/authenticate',
-            '/'
+            '/',
+            '/artist'
         ]
     });
 }
