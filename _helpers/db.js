@@ -35,4 +35,10 @@ module.exports = {
     User: require('../users/user.model')
 };
 
+// <<<<<<< HEAD
 
+// =======
+// module.exports = {
+// 	Artis: require('../server')
+// }
+// >>>>>>> dietzAPI

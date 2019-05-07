@@ -161,6 +161,35 @@ function _delete(req, res, next) {
         .catch(err => next(err));
 }
 
+// MONGO CONNCTION
+const config = require('config.json');
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || config.connectionString, { useCreateIndex: true, useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+const uri = `mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0`;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+const db = require('_helpers/db');
+const Artis = db.Artis;
+
+app.get('/artist',function(req,res){
+	client.connect(function(err, client) {
+		if (err) throw err;
+		var dbo = client.db("Soundplow");
+  		dbo.collection("artists").find({}, { projection: { _id: 0, name: 1, genre: 1} }).toArray(function(err, result) {
+   			if (err) throw err;
+   			res.render('artist',{
+				data: result
+			});
+    	});
+  		client.close();
+	});
+});
+
+
+
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
 const server = app.listen(port, function () {
