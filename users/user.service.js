@@ -24,26 +24,38 @@ module.exports = {
 
 async function authenticate({ username, password }) {
     console.log("Authenticating...")
-    var user;
+    //var user;
     client.connect(function(err, client) {
         if (err) throw err;
             var dbo = client.db("Soundplow");
-            user = dbo.collection("Users").findOne({username});
-            console.log("SENT!!!") });
-            console.log("...")
+            //users = dbo.collection("Users")
+            console.log('username:')
+            console.log(username)
+            dbo.collection("Users").findOne({'username':username},function(err, result){
+                if(err) throw err;
+                console.log(result)
+                if (result && bcrypt.compareSync(password, result.password)) {
+                    console.log("verifying password")
+                    const token = jwt.sign({ sub: result.id }, config.secret);
+                    result.online = true;
+                    dbo.collection("Users").save(result)
+                     return {
+                        //...userWithoutHash,
+                        token
+                    };
+                }
+                else{
+                    alert("Wrong password")
+                    res.redirect('/')
+                    //console.log("Shit went wrong matching the password fuck fuck fuck")
+                }
 
-    if (user && bcrypt.compareSync(password, user.hash)) {
-        console.log("verifying password")
-        bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return console.log("wrong pass") && cb(err);
-            cb(null, isMatch);
-        });
-        const token = jwt.sign({ sub: user.id }, config.secret);
-        return {
-            ...userWithoutHash,
-            token
-        };
-    }
+        console.log("SENT!!!") });
+        console.log("...")
+            });
+            
+
+    
 }
 
 
@@ -67,14 +79,14 @@ async function create(userParam) {
         bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
             if (err) return next(err);
 
-            // hash the password using our new salt
-            bcrypt.hash(user.password, salt, function(err, hash) {
-            if (err) return next(err);
+            // NO ENCRYPT RN
+             bcrypt.hash(user.password, salt, function(err, hash) {
+             if (err) return next(err);
 
-            // override the cleartext password with the hashed one
-            user.password = hash;
-            //next();
-            });
+             // override the cleartext password with the hashed one
+             user.password = hash;
+             //next();
+             });
         });
      }
     console.log("created new user...now uploading")

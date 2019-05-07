@@ -29,6 +29,7 @@ router.get('/',function(req,res){
 router.get('/register', function(req,res){
     res.render('register');
 });
+
 module.exports = router;
 
 // function authenticate(req, res, next) {
