@@ -17,8 +17,12 @@ function jwt() {
             '/authenticate',
             '/',
             '/api/register',
-            '/artist'
-
+            '/artist',
+            '/allUsers',
+            '/concerts',
+            '/descriptions',
+            '/location'
+// >>>>>>> dietzAPI
         ]
     });
 }
