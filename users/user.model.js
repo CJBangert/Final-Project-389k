@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     sex:{type:String},
     music_intrests:{type: [String],default: []},
     concerts_going:{type:[Number], default: []},
+    online:{type: Boolean, default: false},
     createdDate: { type: Date, default: Date.now }
 });
 

@@ -22,7 +22,7 @@ client.connect(function(err, client) {
 		console.log("Connected");
 	}
 
-  client.close();
+ // client.close();
 });
 
 

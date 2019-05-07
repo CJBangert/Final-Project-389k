@@ -119,8 +119,8 @@ app.get('/register', function(req,res){
 
 function authenticate(req, res, next) {
     userService.authenticate(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
         .catch(err => next(err));
+        res.render('home')
 }
 
 function register(req, res, next) {
@@ -184,7 +184,7 @@ app.get('/artist',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
+  	//	client.close();
 	});
 });
 
@@ -198,7 +198,7 @@ app.get('/allUsers',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
+  		//client.close();
 	});
 });
 
@@ -212,7 +212,7 @@ app.get('/concerts',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
+  	//	client.close();
 	});
 });
 
@@ -230,7 +230,7 @@ app.get('/location',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
+  	//	client.close();
 	});
 });
 
