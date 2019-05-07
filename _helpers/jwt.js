@@ -16,7 +16,11 @@ function jwt() {
             '/views/layouts/main',
             '/authenticate',
             '/',
-            '/artist'
+            '/artist',
+            '/allUsers',
+            '/concerts',
+            '/descriptions',
+            '/location'
         ]
     });
 }

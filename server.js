@@ -66,9 +66,55 @@ app.get('/artist',function(req,res){
 	client.connect(function(err, client) {
 		if (err) throw err;
 		var dbo = client.db("Soundplow");
-  		dbo.collection("artists").find({}, { projection: { _id: 0, name: 1, genre: 1} }).toArray(function(err, result) {
+  		dbo.collection("artists").find({}, { projection: { _id: 0, name: 1, genre: 1, tour_id: 1} }).toArray(function(err, result) {
    			if (err) throw err;
    			res.render('artist',{
+				data: result
+			});
+    	});
+  		client.close();
+	});
+});
+
+app.get('/allUsers',function(req,res){
+	client.connect(function(err, client) {
+		if (err) throw err;
+		var dbo = client.db("Soundplow");
+  		dbo.collection("Users").find({}, { projection: { _id: 0, username: 1, sex: 1, age: 1, music_interests: 1, concerts_going: 1} }).toArray(function(err, result) {
+   			if (err) throw err;
+   			res.render('allUsers',{
+				data: result
+			});
+    	});
+  		client.close();
+	});
+});
+
+app.get('/concerts',function(req,res){
+	client.connect(function(err, client) {
+		if (err) throw err;
+		var dbo = client.db("Soundplow");
+  		dbo.collection("concerts").find({}, { projection: { _id: 0, lineup: 1, date: 1, price: 1, location: 1, friends_going: 1, id: 1} }).toArray(function(err, result) {
+   			if (err) throw err;
+   			res.render('concerts',{
+				data: result
+			});
+    	});
+  		client.close();
+	});
+});
+
+app.get('/descriptions',function(req,res){
+	res.render('descriptions');
+});
+
+app.get('/location',function(req,res){
+	client.connect(function(err, client) {
+		if (err) throw err;
+		var dbo = client.db("Soundplow");
+  		dbo.collection("venues").find({}, { projection: { _id: 0, name: 1, ids: 1} }).toArray(function(err, result) {
+   			if (err) throw err;
+   			res.render('location',{
 				data: result
 			});
     	});
