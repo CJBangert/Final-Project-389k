@@ -73,13 +73,14 @@ async function create(userParam) {
     // if (await User.findOne({ username: userParam.username })) {
     //     throw 'Username "' + userParam.username + '" is already taken';
     // }
+    userParam.music_interests = userParam.music_interests.split(" ")
     var user = new User(userParam);
     console.log("is unique..")
     if (userParam.password) {
         bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
             if (err) return next(err);
 
-            // NO ENCRYPT RN
+            // ENCRYPt
              bcrypt.hash(user.password, salt, function(err, hash) {
              if (err) return next(err);
 

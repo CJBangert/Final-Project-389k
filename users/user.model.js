@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     username: { type: String, index:{unique: true}, required: true },
     password: { type: String, required: true },
     sex:{type:String},
-    music_intrests:{type: [String],default: []},
+    music_interests:{type: [String],default: []},
     concerts_going:{type:[Number], default: []},
     online:{type: Boolean, default: false},
     createdDate: { type: Date, default: Date.now }
