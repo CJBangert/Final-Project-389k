@@ -4,8 +4,7 @@ const userService = require('./user.service');
 
 // routes
 router.post('/api/authenticate', authenticate);
-router.post('/api/register', register);
-//router.get('/', getAll);
+// router.post('/api/register', register);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/:id', update);
@@ -38,11 +37,11 @@ function authenticate(req, res, next) {
         .catch(err => next(err));
 }
 
-function register(req, res, next) {
-    userService.create(req.body)
-        .then(() => res.json({}))
-        .catch(err => next(err));
-}
+// function register(req, res, next) {
+//     userService.create(req.body)
+//         .then(() => res.json({}))
+//         .catch(err => next(err));
+// }
 
 function getAll(req, res, next) {
     userService.getAll()

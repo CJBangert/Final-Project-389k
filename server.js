@@ -124,9 +124,11 @@ function authenticate(req, res, next) {
 }
 
 function register(req, res, next) {
+	console.log(req.body)
     userService.create(req.body) 
-        .then(() => res.json({}) && res.render('home'))
         .catch(err => next(err));
+        console.log("Registration Successful! Going home...")
+   res.render('home')
 }
 
 function getAll(req, res, next) {
