@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 var exphbs = require('express-handlebars');
-var controller = require('./users/users.controller')
 app.use(logger('dev'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -21,71 +20,8 @@ app.use(cors());
 app.use(jwt());
 
 // api routes
-//app.use('/users', require('./users/users.controller'));
+app.use('/users', require('./users/users.controller'));
 
-// global error handler
-app.use(errorHandler);
-// app.get('/',function(req,res){
-// 	if(!req.user){
-// 		console.log('redirecting...')
-// 		res.redirect('/authenticate')
-// 	}
-// 	else{
-// 		res.render('home')
-// 	}
-// });
-// app.get('/authenticate',function(req,res){
-// 	console.log("Going to auth...")
-//     res.render('authenticate');
-//     console.log("register auth")
-    
-//   //  res.send("UNIMPLEMENTED ENDPOINT");
-// });
-// app.get('/register', function(req,res){
-// 	res.render('register');
-// });
-
-// app.post('/api/authenticate',function(req,res){
-
-// 	// find the user
-// 	controller.authenticate({
-// 		name: req.body.name
-// 	}, function(err, user) {
-
-// 		if (err) throw err;
-
-// 		if (!user) {
-// 			res.json({ success: false, message: 'Authentication failed. User not found.' });
-// 		} else if (user) {
-
-// 			// check if password matches
-// 			if (user.password != req.body.password) {
-// 				res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-// 			} else {
-
-// 				// if user is found and password is right
-// 				// create a token
-// 				var payload = {
-// 					admin: user.admin	
-// 				}
-// 				var token = jwt.sign(payload, app.get('superSecret'), {
-// 					expiresIn: 86400 // expires in 24 hours
-// 				});
-
-// 				res.json({
-// 					success: true,
-// 					message: 'Enjoy your token!',
-// 					token: token
-// 				});
-// 			}		
-
-// 		}
-
-// 	});
-
-// })	
-//const express = require('express');
-//const router = express.Router();
 const userService = require('./users/user.service');
 
 // routes
@@ -161,6 +97,7 @@ function _delete(req, res, next) {
         .catch(err => next(err));
 }
 
+
 // MONGO CONNCTION
 const config = require('config.json');
 const mongoose = require('mongoose');
@@ -170,9 +107,6 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const uri = `mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
-
-const db = require('_helpers/db');
-const Artis = db.Artis;
 
 app.get('/artist',function(req,res){
 	client.connect(function(err, client) {
@@ -184,7 +118,6 @@ app.get('/artist',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
 	});
 });
 
@@ -198,7 +131,6 @@ app.get('/allUsers',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
 	});
 });
 
@@ -212,12 +144,7 @@ app.get('/concerts',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
 	});
-});
-
-app.get('/descriptions',function(req,res){
-	res.render('descriptions');
 });
 
 app.get('/location',function(req,res){
@@ -230,10 +157,12 @@ app.get('/location',function(req,res){
 				data: result
 			});
     	});
-  		client.close();
 	});
 });
 
+app.get('/descriptions',function(req,res){
+	res.render('descriptions');
+});
 
 
 // start server
