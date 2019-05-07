@@ -3,7 +3,7 @@ const router = express.Router();
 const userService = require('./user.service');
 
 // routes
-router.post('/api/authenticate', authenticate);
+//router.post('/api/authenticate', authenticate);
 // router.post('/api/register', register);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
@@ -19,23 +19,23 @@ router.get('/',function(req,res){
         res.render('home')
     }
 });
-router.get('/authenticate',function(req,res){
-    console.log("Going to auth...")
-    res.render('authenticate');
-    console.log("register auth")
+// router.get('/authenticate',function(req,res){
+//     console.log("Going to auth...")
+//     res.render('authenticate');
+//     console.log("register auth")
     
-  //  res.send("UNIMPLEMENTED ENDPOINT");
-});
+//   //  res.send("UNIMPLEMENTED ENDPOINT");
+// });
 router.get('/register', function(req,res){
     res.render('register');
 });
 module.exports = router;
 
-function authenticate(req, res, next) {
-    userService.authenticate(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-        .catch(err => next(err));
-}
+// function authenticate(req, res, next) {
+//     userService.authenticate(req.body)
+//         .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+//         .catch(err => next(err));
+// }
 
 // function register(req, res, next) {
 //     userService.create(req.body)
