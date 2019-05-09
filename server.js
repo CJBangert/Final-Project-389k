@@ -108,6 +108,10 @@ const assert = require('assert');
 const uri = `mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
+app.get('/api/register',function(req,res){
+  res.render('home');
+});
+
 app.get('/artist',function(req,res){
 	client.connect(function(err, client) {
 		if (err) throw err;
@@ -168,9 +172,15 @@ app.get('/descriptions',function(req,res){
 	res.render('descriptions');
 });
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket) {
+    console.log('NEW connection.');
+});
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
-const server = app.listen(port, function () {
+const server = http.listen(port, function () {
     console.log('Server listening on port ' + port);
 });

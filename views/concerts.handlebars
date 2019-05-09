@@ -1,7 +1,39 @@
+<span><a href="/api/register">Home</a></span>
+
+<h3> Add a Concert Below </h3>
+<form method="POST" action="/api/addConcert">
+        <div>
+            <label>Lineup:</label>
+            <input type="text" name="lineup" size="50" placeholder="list artists separated by spaces">
+        </div>
+         <div>
+            <label>Date</label>
+            <input type="text" name="date" size="50" placeholder="ex. 5/17/2019">
+        </div>
+       <div>
+            <label>Price</label>
+            <input type="text" name="price" size="50" placeholder="ex. 55">
+        </div>
+         <div>
+            <label>Location</label>
+            <input type="text" name="location" size="50" placeholder="ex. Merriweather Post Pavilion">
+        </div>
+         <div >
+            <label>Concert ID</label>
+            <input type="text" name="id size="50" placeholder="ex.123">
+        </div>
+
+        <button type="submit">Add Concert </button>
+    </form>
+
+ <h6> _______________________________________________________________________________________________________</h6>   
+ <h3> List of Concerts </h3>
+
 {{#each data}}
     <article>
         <div>
-          <p name="concerts"> {{this.lineup}} <br> Date: {{this.date}} <br> Price: ${{ this.price}} before fees <br> Location: {{this.location}} <br> Friends Going: {{this.friends_going}} <br> Concert ID: {{this.id}} <p>             
+          <p name="concerts"> {{this.lineup}} <br> Date: {{this.date}} <br> Price: ${{ this.price}} before fees <br> Location: {{this.location}} <br> Friends Going: {{this.friends_going}} <br> Concert ID: {{this.id}}  <p>
+          <span><a href="/api/register">Delete Concert</a></span>             
         </div>
     </article>
 {{/each}}

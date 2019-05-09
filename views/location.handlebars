@@ -1,7 +1,10 @@
+<span><a href="/api/register">Home</a></span>
+
 {{#each data}}
     <article>
         <div>
-          <p name="location"> {{this.name}} <br> Concert IDs: {{this.ids}}           
+          <p name="location"> {{this.name}} <br> Concert IDs: {{this.ids}} </p>
+          <span><a href="/api/register">Delete Venue</a></span>          
         </div>
     </article>
 {{/each}}
