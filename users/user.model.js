@@ -7,7 +7,8 @@ var SALT_WORK_FACTOR = 10;
 const UserSchema = new Schema({
     username: { type: String, index:{unique: true}, required: true },
     password: { type: String, required: true },
-    sex:{type:String},
+    sex:{type:String, required: true},
+    age:{type:String, required: true},
     music_interests:{type: [String],default: []},
     concerts_going:{type:[Number], default: []},
     online:{type: Boolean, default: false},

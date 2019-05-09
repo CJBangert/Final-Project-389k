@@ -1,7 +1,16 @@
+<ul id="messages"></ul>
+<form id="box" action="">
+	<input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+<span><a href="/api/register">Home</a></span>
+
+<h3> List of All Users on SoundPlow </h3>
+
 {{#each data}}
     <article>
         <div>
-          <p name="users"> {{this.username}} <br> Sex: {{this.sex}} <br> Age: {{ this.age}} <br> Music Interests: {{this.music_interests}} <br> Concerts IDs Going To: {{this.concerts_going}}<p>             
+          <p name="users"> {{this.username}} <br> Sex: {{this.sex}} <br> Age: {{this.age}} <br> Music Interests: {{this.music_interests}} <br> Concerts IDs Going To: {{this.concerts_going}}<p>             
         </div>
     </article>
 {{/each}}
