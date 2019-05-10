@@ -7,8 +7,8 @@
 6 silly lifecycle final_proj@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle final_proj@1.0.0~start: final_proj@1.0.0
 8 verbose lifecycle final_proj@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle final_proj@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/mnt/c/users/tony/git/389Kspring19/projects/final-project/Final-Project-389k/node_modules/.bin:/home/dietz21/.cargo/bin:/home/dietz21/.opam/4.04.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/ProgramData/Oracle/Java/javapath_target_1363156:/mnt/c/Windows/System32:/mnt/c/Windows:/mnt/c/Windows/System32/wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Program Files (x86)/HP/HP Performance Advisor:/mnt/c/Program Files/MATLAB/R2017a/bin:/mnt/c/Program Files/MiKTeX 2.9/miktex/bin/x64:/mnt/c/Windows/System32/OpenSSH:/mnt/c/Program Files/Intel/WiFi/bin:/mnt/c/Program Files/Common Files/Intel/WirelessCommon:/mnt/c/Program Files/nodejs:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Ruby24-x64/bin:/mnt/c/Users/Tony/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Tony/AppData/Roaming/npm:/snap/bin
-10 verbose lifecycle final_proj@1.0.0~start: CWD: /mnt/c/users/tony/git/389Kspring19/projects/final-project/Final-Project-389k
+9 verbose lifecycle final_proj@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/mnt/c/Users/cjban/git/Final-Project-389k/node_modules/.bin:/home/cjbangert/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.UbuntuonWindows_1804.2018.817.0_x64__79rhkp1fndgsc:/mnt/c/Windows/System32:/mnt/c/Windows:/mnt/c/Windows/System32/wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Windows/System32/OpenSSH:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Java/jdk1.8.0_201/bin:/mnt/c/Android/android-sdk/tools:/mnt/c/Android/android-sdk/platform-tools:/mnt/c/Android/android-sdk/tools/bin:/mnt/c/Program Files/nodejs:/mnt/c/Users/cjban/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/cjban/AppData/Roaming/npm:/snap/bin
+10 verbose lifecycle final_proj@1.0.0~start: CWD: /mnt/c/Users/cjban/git/Final-Project-389k
 11 silly lifecycle final_proj@1.0.0~start: Args: [ '-c', 'node ./server.js' ]
 12 silly lifecycle final_proj@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle final_proj@1.0.0~start: Failed to exec start script
@@ -23,8 +23,8 @@
 14 verbose stack     at maybeClose (internal/child_process.js:925:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
 15 verbose pkgid final_proj@1.0.0
-16 verbose cwd /mnt/c/users/tony/git/389Kspring19/projects/final-project/Final-Project-389k
-17 error Linux 4.4.0-17134-Microsoft
+16 verbose cwd /mnt/c/Users/cjban/git/Final-Project-389k
+17 error Linux 4.4.0-17763-Microsoft
 18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
 19 error node v8.10.0
 20 error npm  v3.5.2

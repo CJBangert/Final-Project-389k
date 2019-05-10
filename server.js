@@ -213,9 +213,7 @@ app.get('/descriptions',function(req,res){
 ////////////////////////////////////////////
 mongoose.connect('mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0',{useNewUrlParser: true});
 
-/////////////
-var concert = require('./module/concert')
-//
+
 app.post("/api/delete_id", function(req, res) {
     var a = req.body.id;
     client.connect(function(err, client) {
