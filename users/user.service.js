@@ -73,7 +73,8 @@ async function create(userParam) {
     // if (await User.findOne({ username: userParam.username })) {
     //     throw 'Username "' + userParam.username + '" is already taken';
     // }
-    userParam.music_interests = userParam.music_interests.split(" ")
+    userParam.music_interests = userParam.music_interests.split(",")
+    userParam.concerts_going = userParam.concerts_going.split(",")
     var user = new User(userParam);
     console.log("is unique..")
     if (userParam.password) {

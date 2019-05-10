@@ -8,9 +8,9 @@ const UserSchema = new Schema({
     username: { type: String, index:{unique: true}, required: true },
     password: { type: String, required: true },
     sex:{type:String, required: true},
-    age:{type:String, required: true},
+    age:{type:Number, required: true},
     music_interests:{type: [String],default: []},
-    concerts_going:{type:[Number], default: []},
+    concerts_going:{type: [String], default: []},
     online:{type: Boolean, default: false},
     createdDate: { type: Date, default: Date.now }
 });
