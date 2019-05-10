@@ -1,4 +1,4 @@
-﻿require('rootpath')();
+require('rootpath')();
 const express = require('express');
 const app = express();
 var logger = require('morgan');
@@ -28,6 +28,7 @@ const userService = require('./users/user.service');
 // routes
 app.post('/api/authenticate', authenticate);
 app.post('/api/register', register);
+
 //router.get('/', getAll);
 //app.get('/current', getCurrent);
 //app.get('/:id', getById);
@@ -206,6 +207,54 @@ app.get('/location',function(req,res){
 app.get('/descriptions',function(req,res){
 	res.render('descriptions');
 });
+
+
+
+////////////////////////////////////////////
+mongoose.connect('mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0',{useNewUrlParser: true});
+
+/////////////
+var concert = require('./module/concert')
+//
+app.post("/api/delete_id", function(req, res) {
+    var a = req.body.id;
+    client.connect(function(err, client) {
+      if (err) throw err;
+      var dbo = client.db("Soundplow");
+      dbo.collection("concerts").deleteOne({id: a}, function(err, result) {
+        if (err) throw err;
+      });
+      dbo.collection("concerts").find({}, { projection: { _id: 0, lineup: 1, date: 1, price: 1, location: 1, friends_going: 1, id: 1} }).toArray(function(err, resul) {
+        if (err) throw err;
+        res.render('concerts',{
+          data: resul
+        });
+      });
+    });
+});
+
+app.post("/api/delete_venue", function(req, res) {
+    var a = req.body.name;
+
+    client.connect(function(err, client) {
+      if (err) throw err;
+      var dbo = client.db("Soundplow");
+      dbo.collection("venues").deleteOne({name: a}, function(err, result) {
+        if (err) throw err;
+      });
+      dbo.collection("venues").find({}, { projection: { _id: 0, name: 1,  ids: 1} }).toArray(function(err, resul) {
+        if (err) throw err;
+        res.render('location',{
+          data: resul
+        });
+      });
+    });
+});
+
+
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.get('/chat',function(req,res){
   res.render('chat')

@@ -18,6 +18,9 @@ const ConcertSchema = new Schema({
     id:{type:Number, required: true}
 });
 
+var concert = mongoose.model('concerts', ConcertSchema);
+module.exports = concert;
+
 const VenueSchema = new Schema({
     name: { type: String, index:{unique: true}, required: true },
     id:{ type:[Number], default: [], required: true}
