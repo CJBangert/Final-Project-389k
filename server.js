@@ -38,6 +38,7 @@ app.get('/',function(req,res){
         res.redirect('/authenticate')
     }
     else{
+
         res.render('home')
     }
 });
@@ -49,6 +50,7 @@ app.get('/authenticate',function(req,res){
   //  res.send("UNIMPLEMENTED ENDPOINT");
 });
 app.get('/register', function(req,res){
+    
     res.render('register');
 });
 //module.exports = router;

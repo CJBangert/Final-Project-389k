@@ -1,6 +1,7 @@
 <h1>Register</h1>
 <article>
-    <form method="POST" action="/api/register">
+    <ul id="messages"></ul>
+    <form method="POST" action="/api/register" id="m" autocomplete="off">
         <div>
             <label>Username:</label>
             <input type="text" name="username" size="50" placeholder="username">
@@ -19,13 +20,14 @@
         </div>
          <div >
             <label>Music Interests:</label>
-            <input type="text" name="music_interests" size="50" placeholder="ex. Country, Rap, ClassicRock">
+            <input type="text" name="music_interests" size="50" placeholder="ex. Country, Rap, Classic Rock">
         </div>
         <div >
             <label>Concert IDs:</label>
             <input type="text" name="concerts_going" size="50" placeholder="ex. 123, 5, 785">
         </div>
-
+        
         <button type="submit">Register </button>
+        
     </form>
 </article>
