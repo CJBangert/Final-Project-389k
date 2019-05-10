@@ -23,7 +23,7 @@ function jwt() {
             '/descriptions',
             '/location',
             "./views/layouts/soundplowlogo.jpg",
-            '/chat'
+            '/api/addConcert'
 // >>>>>>> dietzAPI
         ]
     });

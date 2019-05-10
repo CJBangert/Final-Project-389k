@@ -4,7 +4,7 @@
     <form method="POST" action="/api/register" id="form" autocomplete="off">
         <div>
             <label>Username:</label>
-            <input type="text" name="username" size="50" placeholder="username">
+            <input type="text" name="username" size="50" placeholder="username" id = "username">
         </div>
          <div>
             <label>Password:</label>
@@ -20,7 +20,7 @@
         </div>
          <div >
             <label>Music Interests:</label>
-            <input type="text" name="music_interests" size="50" placeholder="ex. Country, Rap, Classic Rock">
+            <input type="text" name="music_interests" size="50" id = "music "placeholder="ex. Country, Rap, Classic Rock">
         </div>
         <div >
             <label>Concert IDs:</label>
@@ -32,9 +32,3 @@
     </form>
 
 </article>
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-var socket = io();
-socket.on(‘POST’, alert("New User!"))
-</script>
