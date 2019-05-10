@@ -1,26 +1,30 @@
 <span><a href="/api/register">Home</a></span>
 
 <h3> Add a Concert Below </h3>
-<form method="POST" action="/api/addConcert">
+<form method="POST" action="/api/addConcert" id="add_Concert">
         <div>
             <label>Lineup:</label>
-            <input type="text" name="lineup" size="50" placeholder="list artists separated by spaces">
+            <input type="text" name="lineup" id ="lineup" size="50" placeholder="list artists separated by spaces">
         </div>
          <div>
             <label>Date</label>
-            <input type="text" name="date" size="50" placeholder="ex. 5/17/2019">
+            <input type="text" name="date" id = "date" size="50" placeholder="ex. 5/17/2019">
         </div>
        <div>
             <label>Price</label>
-            <input type="text" name="price" size="50" placeholder="ex. 55">
+            <input type="text" name="price" id="price" size="50" placeholder="ex. 55">
         </div>
          <div>
             <label>Location</label>
-            <input type="text" name="location" size="50" placeholder="ex. Merriweather Post Pavilion">
+            <input type="text" name="location" id="location" size="50" placeholder="ex. Merriweather Post Pavilion">
+        </div>
+        <div>
+            <label>Freinds You Know are Going</label>
+            <input type="text" name="friends_going" size="50" id="friends_going" placeholder="ex. George">
         </div>
          <div >
             <label>Concert ID</label>
-            <input type="text" name="id size="50" placeholder="ex.123">
+            <input type="text" name="id" size="50" id="ident" placeholder="ex.123">
         </div>
 
         <button type="submit">Add Concert </button>
@@ -28,12 +32,13 @@
 
  <h6> _______________________________________________________________________________________________________</h6>   
  <h3> List of Concerts </h3>
-
+<u1 id="concertList">
 {{#each data}}
+
     <article>
         <div>
-          <p name="concerts"> {{this.lineup}} <br> Date: {{this.date}} <br> Price: ${{ this.price}} before fees <br> Location: {{this.location}} <br> Friends Going: {{this.friends_going}} <br> Concert ID: {{this.id}}  <p>
-          <span><a href="/api/register">Delete Concert</a></span>             
+          <p name="concerts"> {{this.lineup}} <br> Date: {{this.date}} <br> Price: ${{ this.price}} before fees <br> Location: {{this.location}} <br> Friends Going: {{this.friends_going}} <br> Concert ID: {{this.id}}  </p>
+          <span><a href="/api/register">Delete Concert</a></span>          
         </div>
     </article>
 {{/each}}

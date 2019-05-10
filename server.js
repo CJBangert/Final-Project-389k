@@ -22,7 +22,7 @@ app.use(jwt());
 
 // api routes
 app.use('/users', require('./users/users.controller'));
-
+var Concert= require('./artist/artist.model')
 const userService = require('./users/user.service');
 
 // routes
@@ -118,6 +118,32 @@ const assert = require('assert');
 const uri = `mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
+app.post('/api/addConcert',function(req,res){
+  var lineup =  req.body.lineup;
+  var date =  req.body.date;
+  var price =  req.body.price;
+  var location = req.body.location
+  var friends_going =  req.body.friends_going;
+  var id =  req.body.id;
+  var newConcert = new Concert({
+    lineup: lineup,
+    date: date,
+    price: price,
+    location: location,
+    friends_going: friends_going,
+    id: id
+  });
+  client.connect(function(err, client) {
+    if (err) throw err;
+    var dbo = client.db("Soundplow");
+    dbo.collection("concerts").insertOne(newConcert)
+    console.log("saved new concert")
+    io.emit('new concert posted', newConcert);
+    return res.redirect('/concerts');
+  })
+})
+
+
 app.get('/api/register',function(req,res){
   res.render('home');
 });
@@ -177,7 +203,6 @@ app.get('/location',function(req,res){
 
 	});
 });
-
 app.get('/descriptions',function(req,res){
 	res.render('descriptions');
 });
