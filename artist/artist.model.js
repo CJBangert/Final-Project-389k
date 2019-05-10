@@ -14,9 +14,12 @@ const ConcertSchema = new Schema({
     date: { type: String, required: true },
     price: { type: Number, required: true},
     location: { type: String, required: true},
-    friends_going: {type; [String], default: [] required: true},
+    friends_going: {type: [String], default: [], required: true},
     id:{type:Number, required: true}
 });
+
+var concert = mongoose.model('concerts', ConcertSchema);
+module.exports = concert;
 
 const VenueSchema = new Schema({
     name: { type: String, index:{unique: true}, required: true },
