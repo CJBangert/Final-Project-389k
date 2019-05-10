@@ -15,7 +15,7 @@ const ConcertSchema = new Schema({
     price: { type: Number, required: true},
     location: { type: String, required: true},
     friends_going: {type: [String], default: [], required: true},
-    id:{type:Number, required: true}
+    id:{type:String, required: true}
 });
 
 var concert = mongoose.model('concerts', ConcertSchema);
