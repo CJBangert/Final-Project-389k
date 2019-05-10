@@ -27,6 +27,9 @@ function jwt() {
             '/api/delete_id/:id',
             '/api/delete_id',
             "/api/delete_venue"
+
+            '/api/addConcert'
+
 // >>>>>>> dietzAPI
         ]
     });

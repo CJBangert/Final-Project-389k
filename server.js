@@ -1,4 +1,4 @@
-﻿require('rootpath')();
+require('rootpath')();
 const express = require('express');
 const app = express();
 var logger = require('morgan');
@@ -15,13 +15,14 @@ var _ = require("underscore");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 // use JWT auth to secure the api
 app.use(jwt());
 
 // api routes
 app.use('/users', require('./users/users.controller'));
-
+var Concert= require('./artist/artist.model')
 const userService = require('./users/user.service');
 
 // routes
@@ -70,8 +71,9 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
 	console.log(req.body)
-    userService.create(req.body) 
-        .catch(err => next(err));
+    userService.create(req.body).catch(err => next(err));
+    io.emit('POST', req.body);
+
         console.log("Registration Successful! Going home...")
    res.render('home')
 }
@@ -116,6 +118,32 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const uri = `mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
+app.post('/api/addConcert',function(req,res){
+  var lineup =  req.body.lineup;
+  var date =  req.body.date;
+  var price =  req.body.price;
+  var location = req.body.location
+  var friends_going =  req.body.friends_going;
+  var id =  req.body.id;
+  var newConcert = new Concert({
+    lineup: lineup,
+    date: date,
+    price: price,
+    location: location,
+    friends_going: friends_going,
+    id: id
+  });
+  client.connect(function(err, client) {
+    if (err) throw err;
+    var dbo = client.db("Soundplow");
+    dbo.collection("concerts").insertOne(newConcert)
+    console.log("saved new concert")
+    io.emit('new concert posted', newConcert);
+    return res.redirect('/concerts');
+  })
+})
+
 
 app.get('/api/register',function(req,res){
   res.render('home');
@@ -176,18 +204,18 @@ app.get('/location',function(req,res){
 
 	});
 });
-
 app.get('/descriptions',function(req,res){
 	res.render('descriptions');
 });
 
 
 
+////////////////////////////////////////////
 mongoose.connect('mongodb+srv://CJADMIN:SoundplowDB1@cluster0-rx3qh.mongodb.net/test?retryWrites=true0',{useNewUrlParser: true});
 
-
+/////////////
 var concert = require('./module/concert')
-
+//
 app.post("/api/delete_id", function(req, res) {
     var a = req.body.id;
     client.connect(function(err, client) {
@@ -228,9 +256,13 @@ app.post("/api/delete_venue", function(req, res) {
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-io.on('connection', function(socket) {
-    console.log('NEW connection.');
-});
+app.get('/chat',function(req,res){
+  res.render('chat')
+})
+
+// io.on('connection', function(socket) {
+//     console.log('NEW connection.');
+// });
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;

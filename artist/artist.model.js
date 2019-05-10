@@ -27,3 +27,4 @@ const VenueSchema = new Schema({
 });
 
 
+module.exports = mongoose.model('Concert', ConcertSchema);
