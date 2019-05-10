@@ -54,9 +54,15 @@ app.get('/register', function(req,res){
 //module.exports = router;
 
 function authenticate(req, res, next) {
-    userService.authenticate(req.body)
-        .catch(err => next(err));
-        res.render('home')
+    var x= userService.authenticate(req.body)
+    if(x == 'ValidationError'){
+      console.log('errorr')
+      res.render('authenticate')
+    }
+    else if(x == null){
+        res.render('authenticate')
+      }
+      else res.render('home')
 }
 
 function register(req, res, next) {
