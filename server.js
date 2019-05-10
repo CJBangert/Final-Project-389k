@@ -15,7 +15,8 @@ var _ = require("underscore");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 // use JWT auth to secure the api
 app.use(jwt());
 
@@ -69,8 +70,9 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
 	console.log(req.body)
-    userService.create(req.body) 
-        .catch(err => next(err));
+    userService.create(req.body).catch(err => next(err));
+    io.emit('POST', req.body);
+
         console.log("Registration Successful! Going home...")
    res.render('home')
 }
@@ -180,12 +182,13 @@ app.get('/descriptions',function(req,res){
 	res.render('descriptions');
 });
 
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+app.get('/chat',function(req,res){
+  res.render('chat')
+})
 
-io.on('connection', function(socket) {
-    console.log('NEW connection.');
-});
+// io.on('connection', function(socket) {
+//     console.log('NEW connection.');
+// });
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;

@@ -22,7 +22,8 @@ function jwt() {
             '/concerts',
             '/descriptions',
             '/location',
-            "./views/layouts/soundplowlogo.jpg"
+            "./views/layouts/soundplowlogo.jpg",
+            '/chat'
 // >>>>>>> dietzAPI
         ]
     });
