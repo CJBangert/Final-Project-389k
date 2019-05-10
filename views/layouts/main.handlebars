@@ -74,49 +74,49 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 
 <script>
-  var lineup;
-  var data;
-  var price;
-  var location;
-  var friends_going;
-  var id;
-$(function (){
-    var socket = io();
-    $('#add_Concert').submit(function(){
-        lineup = $('#lineup').val();
-        data = $('#date').val();
-        price = $('#price').val();
-        location = $('#location').val();
-        friends_going = $('#friends_going').val();
-        id = $('#ident').val();
-        $('#lineup').val("");
-        $('#date').val("");
-        $('#price').val("");
-        $('#location').val("");
-        $('#friends_going').val("");
-        $('#ident').val("");
-        $.ajax({
-            type: "POST",
-            url: './api/addConcert',
-            data: { 
-              lineup:lineup,
-              date: date,
-              price: price,
-              location: location,
-              friends_going: friends_going,
-              id: id 
-                    },
-            success: function(data, status){
-                console.log("YESSS");  
-                }           
+//   var lineup;
+//   var data;
+//   var price;
+//   var location;
+//   var friends_going;
+//   var id;
+// $(function (){
+//     var socket = io();
+//     $('#add_Concert').submit(function(){
+//         lineup = $('#lineup').val();
+//         data = $('#date').val();
+//         price = $('#price').val();
+//         location = $('#location').val();
+//         friends_going = $('#friends_going').val();
+  //       id = $('#ident').val();
+  //       $('#lineup').val("");
+  //       $('#date').val("");
+  //       $('#price').val("");
+  //       $('#location').val("");
+  //       $('#friends_going').val("");
+  //       $('#ident').val("");
+  //       $.ajax({
+  //           type: "POST",
+  //           url: '/api/addConcert',
+  //           data: { 
+  //             lineup:lineup,
+  //             date: date,
+  //             price: price,
+  //             location: location,
+  //             friends_going: friends_going,
+  //             id: id 
+  //                   },
+  //           success: function(data, status){
+  //               console.log("YESSS");  
+  //               }           
             
-        }); 
-        return false;
-    });
-    socket.on('new concert posted', function(mov){
-    $('#concertList').append($('#listy').text(" A New Concert Has Been Posted : " + mov.lineup));
-  });
-  });
+  //       }); 
+  //       return false;
+  //   });
+  //   socket.on('new concert posted', function(mov){
+  //   $('#concertList').append($('#listy').text(" A New Concert Has Been Posted : " + mov.lineup));
+  // });
+  // });
  
 </script>
       <script>

@@ -1,7 +1,7 @@
 <span><a href="/api/register">Home</a></span>
 
 <h3> Add a Concert Below </h3>
-<form  id="add_Concert">
+<form method="POST" action="/api/addConcert" id="add_Concert">
         <div>
             <label>Lineup:</label>
             <input type="text" name="lineup" id ="lineup" size="50" placeholder="list artists separated by spaces">
@@ -20,7 +20,7 @@
         </div>
         <div>
             <label>Freinds You Know are Going</label>
-            <input type="text" name="friends_going" size="50" id="friends_going" placeholder="ex. Merriweather Post Pavilion">
+            <input type="text" name="friends_going" size="50" id="friends_going" placeholder="ex. George">
         </div>
          <div >
             <label>Concert ID</label>
@@ -34,12 +34,11 @@
  <h3> List of Concerts </h3>
 <u1 id="concertList">
 {{#each data}}
-<li id = "listy">
+
     <article>
         <div>
           <p name="concerts"> {{this.lineup}} <br> Date: {{this.date}} <br> Price: ${{ this.price}} before fees <br> Location: {{this.location}} <br> Friends Going: {{this.friends_going}} <br> Concert ID: {{this.id}}  </p>
           <span><a href="/api/register">Delete Concert</a></span>          
         </div>
     </article>
-</li>
 {{/each}}

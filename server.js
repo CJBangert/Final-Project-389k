@@ -122,6 +122,7 @@ app.post('/api/addConcert',function(req,res){
   var lineup =  req.body.lineup;
   var date =  req.body.date;
   var price =  req.body.price;
+  var location = req.body.location
   var friends_going =  req.body.friends_going;
   var id =  req.body.id;
   var newConcert = new Concert({
@@ -138,7 +139,7 @@ app.post('/api/addConcert',function(req,res){
     dbo.collection("concerts").insertOne(newConcert)
     console.log("saved new concert")
     io.emit('new concert posted', newConcert);
-    return res.send('Done!');;
+    return res.redirect('/concerts');
   })
 })
 
