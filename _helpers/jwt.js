@@ -26,7 +26,7 @@ function jwt() {
             '/api/delete/0',
             '/api/delete_id/:id',
             '/api/delete_id',
-            "/api/delete_venue"
+            "/api/delete_venue",
 
             '/api/addConcert'
 
