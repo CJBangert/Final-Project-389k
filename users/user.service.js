@@ -32,8 +32,11 @@ async function authenticate({ username, password }) {
             console.log('username:')
             console.log(username)
             dbo.collection("Users").findOne({'username':username},function(err, result){
-                if(err) throw err;
+                if(err) return 'ValidationError'
                 console.log(result)
+                if(!result){
+                    return 'ValidationError';
+                }
                 if (result && bcrypt.compareSync(password, result.password)) {
                     console.log("verifying password")
                     const token = jwt.sign({ sub: result.id }, config.secret);
@@ -45,8 +48,8 @@ async function authenticate({ username, password }) {
                     };
                 }
                 else{
-                    alert("Wrong password")
-                    res.redirect('/')
+                    //alert("Wrong password")
+                   return 'ValidationError'
                     //console.log("Shit went wrong matching the password fuck fuck fuck")
                 }
 
