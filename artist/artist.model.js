@@ -20,7 +20,7 @@ const ConcertSchema = new Schema({
 
 const VenueSchema = new Schema({
     name: { type: String, index:{unique: true}, required: true },
-    id:{type:[Number], default: [], required: true}
+    id:{ type:[Number], default: [], required: true}
 });
 
 
